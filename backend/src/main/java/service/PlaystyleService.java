@@ -48,12 +48,19 @@ public class PlaystyleService {
         Random rand = new Random(System.currentTimeMillis() % 500);
         int posNum = rand.nextInt(8); /* 0-7 */
 
-        return switch (primaryPosition) {
-            case PG -> pgPlaystyles[posNum];
-            case SG -> sgPlaystyles[posNum];
-            case SF -> sfPlaystyles[posNum];
-            case PF -> pfPlaystyles[posNum];
-            case C -> centerPlaystyles[posNum];
-        };
+        switch (primaryPosition) {
+            case PG:
+                return pgPlaystyles[posNum];
+            case SG:
+                return sgPlaystyles[posNum];
+            case SF:
+                return sfPlaystyles[posNum];
+            case PF:
+                return pfPlaystyles[posNum];
+            case C:
+                return centerPlaystyles[posNum];
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 }

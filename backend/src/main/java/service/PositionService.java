@@ -22,13 +22,18 @@ public class PositionService {
 
         int posNum = rand.nextInt(6) + 1;
 
-        return switch (posNum) {
-            case 1 -> Position.PG;
-            case 2 -> Position.SG;
-            case 3 -> Position.SF;
-            case 4 -> Position.PF;
-            default -> Position.C;
-        };
+        switch (posNum) {
+            case 1:
+                return Position.PG;
+            case 2:
+                return Position.SG;
+            case 3:
+                return Position.SF;
+            case 4:
+                return Position.PF;
+            default:
+                return Position.C;
+        }
     }
 
     public static Position generateSecondPosition(Position primaryPosition){
