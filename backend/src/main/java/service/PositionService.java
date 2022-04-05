@@ -22,20 +22,20 @@ public class PositionService {
 
         int posNum = rand.nextInt(6) + 1;
 
-        switch (posNum) {
-            case 1:
-                return Position.PG;
-            case 2:
-                return Position.SG;
-            case 3:
-                return Position.SF;
-            case 4:
-                return Position.PF;
-            default:
-                return Position.C;
-        }
+        return switch (posNum) {
+            case 1 -> Position.PG;
+            case 2 -> Position.SG;
+            case 3 -> Position.SF;
+            case 4 -> Position.PF;
+            default -> Position.C;
+        };
     }
 
+    /**
+     * Generate player's second position
+     * @param primaryPosition player's primary position
+     * @return player's second position or null
+     */
     public static Position generateSecondPosition(Position primaryPosition){
         //for now "flip a coin" to see if they get a second POS
         Random rand = new Random(System.currentTimeMillis());

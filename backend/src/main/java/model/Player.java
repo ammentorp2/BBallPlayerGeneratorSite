@@ -142,6 +142,11 @@ public class Player {
         return res;
     }
 
+    /**
+     * Builder feature for Player class
+     *
+     * Utilizes Java's Builder pattern: https://howtodoinjava.com/design-patterns/creational/builder-pattern-in-java/
+     */
     public static class PlayerBuilder{
         private String firstName;
         private String lastName;
@@ -156,8 +161,22 @@ public class Player {
 
         private int age; /* age in years */
 
+        /**
+         * Constructor for Player builder
+         */
         public PlayerBuilder(){}
 
+        /**
+         * Constructor for player builder
+         * @param firstName first name
+         * @param lastName last name
+         * @param heightInches height in inches
+         * @param weight weight in lbs
+         * @param primaryPosition primary position
+         * @param secondaryPosition secondary position
+         * @param playstyle playstyle
+         * @param age age
+         */
         public PlayerBuilder(String firstName,String lastName,int heightInches
                 , int weight, Position primaryPosition, Position secondaryPosition
                 ,String playstyle,int age){
@@ -171,45 +190,91 @@ public class Player {
             this.age = age;
         }
 
+        /**
+         * Add first name
+         * @param firstName first name
+         * @return this
+         */
         public PlayerBuilder appendFirstName(String firstName){
             this.firstName = firstName;
             return this;
         }
 
+        /**
+         * Add last name
+         * @param lastName last name
+         * @return this
+         */
         public PlayerBuilder appendLastName(String lastName){
             this.lastName = lastName;
             return this;
         }
 
+        /**
+         * Add height
+         * @param heightInches height in inches
+         * @return this
+         */
         public PlayerBuilder appendHeight(int heightInches){
             this.heightInches = heightInches;
             return this;
         }
+
+        /**
+         * Add weight
+         * @param weight weight
+         * @return this
+         */
         public PlayerBuilder appendWeight(int weight){
             this.weight = weight;
             return this;
         }
 
+        /**
+         * Append primary pos
+         * @param primaryPosition the primary pos
+         * @return this
+         */
         public PlayerBuilder appendPrimaryPosition(Position primaryPosition){
             this.primaryPosition = primaryPosition;
             return this;
         }
+
+        /**
+         * Append secondary pos
+         * @param secondaryPosition the secondary pos
+         * @return this
+         */
         public PlayerBuilder appendSecondaryPosition(Position secondaryPosition){
             this.secondaryPosition = secondaryPosition;
             return this;
         }
 
+        /**
+         * Append playstyle
+         * @param playstyle the playstyle
+         * @return this
+         */
         public PlayerBuilder appendPlaystyle(String playstyle){
             this.playstyle = playstyle;
             return this;
         }
 
+        /**
+         * Append age
+         * @param age the player's age
+         * @return this
+         */
         public PlayerBuilder appendAge(int age){
             this.age = age;
             return this;
         }
 
 
+        /**
+         * Build the player object
+         * @return created Player
+         */
         public Player build(){
             if(secondaryPosition != null){
                 if(primaryPosition.compareTo(secondaryPosition) == 0
@@ -220,10 +285,20 @@ public class Player {
             return new Player(this);
         }
 
+        /**
+         * Gets primary position.
+         *
+         * @return the primary position
+         */
         public Position getPrimaryPosition() {
             return primaryPosition;
         }
 
+        /**
+         * Gets secondary position.
+         *
+         * @return the secondary position
+         */
         public Position getSecondaryPosition() {
             return secondaryPosition;
         }

@@ -1,5 +1,10 @@
 package service;
 
+/**
+ * General Pair Class
+ * @param <L> element one of the pair
+ * @param <R> element two of the pair
+ */
 public class Pair<L,R> {
     private L l;
     private R r;
