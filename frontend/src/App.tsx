@@ -1,24 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import { GenRandomPlayer } from "./components/genRandomPlayer";
+
+axios.defaults.baseURL = 'http://localhost:8080/';
+// makes the content type for each put and post application/json. Not
+// totally necessary, but is good practice: makes it so the application
+// doesn't have to guess the type of data it's passingca
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.put['Content-Type'] = 'application/json';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GenRandomPlayer />
     </div>
   );
 }
