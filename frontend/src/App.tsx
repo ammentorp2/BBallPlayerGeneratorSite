@@ -1,8 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
+import axios from 'axios'; 
 import './App.css';
-import axios from 'axios';
-import { GenRandomPlayer } from "./components/genRandomPlayer";
 import { GenPlayerForm } from './components/genPlayerForm';
 
 axios.defaults.baseURL = 'http://localhost:8080/';
@@ -16,7 +15,6 @@ function App() {
   return (
     <div className="App">
       <GenPlayerForm />
-      <GenRandomPlayer />
     </div>
   );
 }

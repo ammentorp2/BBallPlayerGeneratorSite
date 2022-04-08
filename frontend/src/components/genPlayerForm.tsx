@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Button, Grid, MenuItem, Select, TextField } from "@mui/material"
+import {genRandomPlayer} from "../util/GetPlayerFunctions"
+import { Player } from "../util/Player"
 
 export const GenPlayerForm = () => {
     //name position(s) and age
@@ -16,6 +18,19 @@ export const GenPlayerForm = () => {
     const [age,setAge] = useState("Random");
     const ageOptions = ["Random",19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40];
 
+    const [tempPlayer,setTempPlayer] = useState<Player>(new Player())
+    const [player,setPlayer] = useState<Player>(new Player())
+    const [playerChanged,setPlayerChanged] = useState(false);
+
+    const handlePlayerChange = (p : Player) => {
+        //TODO this is one step behind
+        setPlayer(p)
+    }
+
+    /*useEffect(() => {
+        setPlayer(tempPlayer)
+    }, [tempPlayer])*/
+
     const handleCreatePlayer = () => {
         console.log(firstName,lastName,primaryPos,secondaryPos,age);
 
@@ -27,7 +42,10 @@ export const GenPlayerForm = () => {
 
                 if(age === "Random"){
                     //True random player
-                    
+                    let p = genRandomPlayer();
+                    handlePlayerChange(p);
+                    //console.log(p);
+                    //setPlayer(p);
                 }
                 else{
                     //create player by age
@@ -177,9 +195,16 @@ export const GenPlayerForm = () => {
                             }
                         </Select>
                 </Grid>
+                <Grid item>
+                    <Button color="success" variant="contained" onClick={handleCreatePlayer}>Generate Player</Button>
+                </Grid>
+                <Grid item>
+                    {player.firstName} {player.lastName} {player.primaryPosition} {player.secondaryPosition} {player.age} years old
+                </Grid>
             </Grid>
             
-          <Button color="success" variant="contained" onClick={handleCreatePlayer}>Generate Player</Button>
+          
+          
         </div>
       );
 }
