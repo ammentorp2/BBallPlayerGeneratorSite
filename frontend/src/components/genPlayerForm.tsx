@@ -13,15 +13,92 @@ export const GenPlayerForm = () => {
     const primaryPosOptions = ['PG','SG','SF','PF','C'];
     const [secondaryPosOptions,setSecondaryPosOptions] = useState(['']);
 
-    const [age,setAge] = useState("28");
-    const ageOptions = [19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40];
+    const [age,setAge] = useState("Random");
+    const ageOptions = ["Random",19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40];
 
     const handleCreatePlayer = () => {
         console.log(firstName,lastName,primaryPos,secondaryPos,age);
+
+        if(firstName === "" && lastName === ""){
+            //random name
+
+            if(primaryPos === ''){
+                //random pos
+
+                if(age === "Random"){
+                    //True random player
+                    
+                }
+                else{
+                    //create player by age
+                   
+                }
+            }
+            else{
+                //rand name but pos
+                if(secondaryPos === ''){
+                    if(age === "Random"){
+                        //create player by pos
+                        
+                    }
+                    else{
+                        //create player by pos and age
+                        
+                    }
+                }
+                else{
+                    if(age === "Random"){
+                        //create player by pos,pos
+                        
+                    }
+                    else{
+                        //create player by pos,pos and age
+                        
+                    }
+                }
+            }
+        }
+        else{
+            //create player by name
+            if(primaryPos === ''){
+                //random pos
+
+                if(age === "Random"){
+                    //player by age
+            
+                }
+                else{
+                    //create player by name and age
+      
+                }
+            }
+            else{
+                // name and pos
+                if(secondaryPos === ''){
+                    if(age === "Random"){
+                        //create player by name and pos
+
+                    }
+                    else{
+                        //create player by name pos and age
+
+                    }
+                }
+                else{
+                    if(age === "Random"){
+                        //create player by name and pos,pos
+                        
+                    }
+                    else{
+                        //create player by name pos,pos and age
+                        
+                    }
+                }
+            }
+        }
     }
 
     const handleChangePrimaryPos = (pos : string) => {
-        //TODO calc secondary pos from here
         setPrimaryPos(pos)
 
         handleChangeSecondaryOptions(pos);
@@ -50,6 +127,11 @@ export const GenPlayerForm = () => {
         setSecondaryPos('')
     }
 
+    const handlePosClear = () => {
+        setPrimaryPos('')
+        setSecondaryPos('')
+    }
+
     return (
         <div>
             <header>Create a player</header>
@@ -72,7 +154,8 @@ export const GenPlayerForm = () => {
                     </Select>
                 </Grid>
                 <Grid item>
-                    Secondary Position: <Select label="Secondary Position" value={secondaryPos} onChange={e => {
+                    Secondary Position: <Select disabled={primaryPos===''} label="Secondary Position" value={secondaryPos} 
+                    onChange={e => {
                         setSecondaryPos(e.target.value)}}>
                             {
                                 secondaryPosOptions.map(p =>(
@@ -80,6 +163,9 @@ export const GenPlayerForm = () => {
                                 ))
                             }
                         </Select>
+                </Grid>
+                <Grid item>
+                    <Button color="warning" variant="contained" onClick={handlePosClear}>Clear Positions</Button>
                 </Grid>
                 <Grid item>
                     Age: <Select label="Age" value={age} onChange={e => {
