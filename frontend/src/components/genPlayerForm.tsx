@@ -11,17 +11,43 @@ export const GenPlayerForm = () => {
     const [secondaryPos,setSecondaryPos] = useState('');
 
     const primaryPosOptions = ['PG','SG','SF','PF','C'];
-    const secondaryPosOptions = [];
+    const [secondaryPosOptions,setSecondaryPosOptions] = useState(['']);
 
-    const [age,setAge] = useState(0);
+    const [age,setAge] = useState("28");
+    const ageOptions = [19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40];
 
     const handleCreatePlayer = () => {
-        console.log(firstName)
+        console.log(firstName,lastName,primaryPos,secondaryPos,age);
     }
 
     const handleChangePrimaryPos = (pos : string) => {
         //TODO calc secondary pos from here
         setPrimaryPos(pos)
+
+        handleChangeSecondaryOptions(pos);
+    }
+
+    const handleChangeSecondaryOptions = (pos : string) => {
+        let secondaryList = [];
+        switch(pos){
+            case "PG":
+                secondaryList.push('SG')
+                break;
+            case "SG":
+                secondaryList.push('PG','SF');
+                break;
+            case "SF":
+                secondaryList.push('SG','PF');
+                break;
+            case "PF":
+                secondaryList.push('SF','C');
+                break;
+            case "C":
+                secondaryList.push('PF');
+                break;
+        }
+        setSecondaryPosOptions(secondaryList);
+        setSecondaryPos('')
     }
 
     return (
@@ -44,6 +70,26 @@ export const GenPlayerForm = () => {
                             ))
                         }
                     </Select>
+                </Grid>
+                <Grid item>
+                    Secondary Position: <Select label="Secondary Position" value={secondaryPos} onChange={e => {
+                        setSecondaryPos(e.target.value)}}>
+                            {
+                                secondaryPosOptions.map(p =>(
+                                    <MenuItem key={p} value={p}>{p}</MenuItem>
+                                ))
+                            }
+                        </Select>
+                </Grid>
+                <Grid item>
+                    Age: <Select label="Age" value={age} onChange={e => {
+                        setAge(e.target.value)}}>
+                            {
+                                ageOptions.map(a =>(
+                                    <MenuItem key={a} value={a}>{a}</MenuItem>
+                                ))
+                            }
+                        </Select>
                 </Grid>
             </Grid>
             
