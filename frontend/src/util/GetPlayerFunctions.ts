@@ -14,7 +14,7 @@ export function genRandomPlayer() : Player{
             p.primaryPosition = x.data.primaryPosition;
             p.secondaryPosition = x.data.secondaryPosition;
             p.age = x.data.age; 
-            console.log(x.data);
+            console.log(p);
             return p;   
         }
     })

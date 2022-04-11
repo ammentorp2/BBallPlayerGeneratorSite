@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Button, Grid, MenuItem, Select, TextField } from "@mui/material"
 import {genRandomPlayer} from "../util/GetPlayerFunctions"
 import { Player } from "../util/Player"
 
-export const GenPlayerForm = () => {
+export const GenPlayerForm = ({setPlayer} : {setPlayer : any}) => {
     //name position(s) and age
     const [firstName,setFirstName] = useState("");
     const [lastName,setLastName] = useState("");
@@ -19,16 +19,6 @@ export const GenPlayerForm = () => {
     const [age,setAge] = useState("Random");
     const ageOptions = ["Random",19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40];
 
-    const [player,setPlayer] = useState<Player>(new Player())
-
-    let navigate = useNavigate();
-
-    const handlePlayerChange = (p : Player) => {
-        setPlayer(p)
-        console.log(player)
-        navigate("/createdPlayer" , {state : player})
-    }
-
     const handleCreatePlayer = () => {
         console.log(firstName,lastName,primaryPos,secondaryPos,age);
 
@@ -41,9 +31,9 @@ export const GenPlayerForm = () => {
                 if(age === "Random"){
                     //True random player
                     let p = genRandomPlayer();
-                    handlePlayerChange(p);
-                    //console.log(p);
-                    //setPlayer(p);
+                    setPlayer(p);
+                    console.log(p);
+                    //handlePlayerChange(player)
                 }
                 else{
                     //create player by age

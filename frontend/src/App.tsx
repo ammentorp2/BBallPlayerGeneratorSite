@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import axios from 'axios'; 
 import './App.css';
 import { GenPlayerForm } from './components/genPlayerForm';
-import { PageRoutes } from './pages/Routes';
+import { HomePage } from './pages/HomePage';
 import { BrowserRouter } from 'react-router-dom';
 
 axios.defaults.baseURL = 'http://localhost:8080/';
@@ -15,10 +15,7 @@ axios.defaults.headers.put['Content-Type'] = 'application/json';
 
 function App() {
   return (
-    <BrowserRouter>
-      <PageRoutes />
-    </BrowserRouter>
-    
+    <HomePage />
   );
 }
 
