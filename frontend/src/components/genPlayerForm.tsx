@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Button, Grid, MenuItem, Select, TextField } from "@mui/material"
 import {genRandomPlayer} from "../util/GetPlayerFunctions"
 import { Player } from "../util/Player"
@@ -18,18 +19,15 @@ export const GenPlayerForm = () => {
     const [age,setAge] = useState("Random");
     const ageOptions = ["Random",19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40];
 
-    const [tempPlayer,setTempPlayer] = useState<Player>(new Player())
     const [player,setPlayer] = useState<Player>(new Player())
-    const [playerChanged,setPlayerChanged] = useState(false);
+
+    let navigate = useNavigate();
 
     const handlePlayerChange = (p : Player) => {
-        //TODO this is one step behind
         setPlayer(p)
+        console.log(player)
+        navigate("/createdPlayer" , {state : player})
     }
-
-    /*useEffect(() => {
-        setPlayer(tempPlayer)
-    }, [tempPlayer])*/
 
     const handleCreatePlayer = () => {
         console.log(firstName,lastName,primaryPos,secondaryPos,age);
@@ -152,9 +150,11 @@ export const GenPlayerForm = () => {
 
     return (
         <div>
-            <header>Create a player</header>
-            All of these fields are optional, if not set they will be created for you!
             <Grid>
+                <Grid item>
+                <header >Create a player</header>
+                    All of these fields are optional, if not set they will be created for you!
+                </Grid>
                 <Grid item>
                     First name: <TextField onChange={e => {setFirstName(e.target.value)}}>{firstName}</TextField>
                 </Grid>
@@ -197,9 +197,6 @@ export const GenPlayerForm = () => {
                 </Grid>
                 <Grid item>
                     <Button color="success" variant="contained" onClick={handleCreatePlayer}>Generate Player</Button>
-                </Grid>
-                <Grid item>
-                    {player.firstName} {player.lastName} {player.primaryPosition} {player.secondaryPosition} {player.age} years old
                 </Grid>
             </Grid>
             

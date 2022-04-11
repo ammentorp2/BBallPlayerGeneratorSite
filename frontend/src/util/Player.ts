@@ -17,4 +17,8 @@ export class Player{
     getFormattedHeight(){
         
     }
+
+    toString() : String{
+        return this.firstName + "," + this.lastName;
+    }
 }
