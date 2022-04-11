@@ -32,6 +32,7 @@ export const GenPlayerForm = ({setPlayer} : {setPlayer : any}) => {
                     //True random player
                     let p = genRandomPlayer();
                     setPlayer(p);
+                    setPlayer(p)
                     console.log(p);
                     //handlePlayerChange(player)
                 }
