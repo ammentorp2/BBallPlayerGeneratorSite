@@ -14,10 +14,6 @@ export class Player{
         this.age = "";
     }
 
-    getFormattedHeight(){
-        
-    }
-
     toString() : String{
         return this.firstName + "," + this.lastName;
     }

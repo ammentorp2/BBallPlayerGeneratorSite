@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import axios from 'axios'; 
 import './App.css';
 import { GenPlayerForm } from './components/genPlayerForm';
-import { HomePage } from './pages/HomePage';
 import { BrowserRouter } from 'react-router-dom';
+import { PageRoutes } from './pages/Routes';
 
 axios.defaults.baseURL = 'http://localhost:8080/';
 // makes the content type for each put and post application/json. Not
@@ -15,7 +15,9 @@ axios.defaults.headers.put['Content-Type'] = 'application/json';
 
 function App() {
   return (
-    <HomePage />
+    <BrowserRouter>
+    <PageRoutes />
+    </BrowserRouter>
   );
 }
 

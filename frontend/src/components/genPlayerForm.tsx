@@ -1,11 +1,11 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Button, Grid, MenuItem, Select, TextField } from "@mui/material"
+import { Button, Grid, MenuItem, Select, TextField, Typography } from "@mui/material"
 import {genRandomPlayer} from "../util/GetPlayerFunctions"
 import { Player } from "../util/Player"
 
-export const GenPlayerForm = ({setPlayer} : {setPlayer : any}) => {
+export const GenPlayerForm = () => {
     //name position(s) and age
     const [firstName,setFirstName] = useState("");
     const [lastName,setLastName] = useState("");
@@ -19,9 +19,10 @@ export const GenPlayerForm = ({setPlayer} : {setPlayer : any}) => {
     const [age,setAge] = useState("Random");
     const ageOptions = ["Random",19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40];
 
+    let navigate = useNavigate();
+
     const handleCreatePlayer = () => {
         console.log(firstName,lastName,primaryPos,secondaryPos,age);
-
         if(firstName === "" && lastName === ""){
             //random name
 
@@ -30,10 +31,8 @@ export const GenPlayerForm = ({setPlayer} : {setPlayer : any}) => {
 
                 if(age === "Random"){
                     //True random player
-                    let p = genRandomPlayer();
-                    setPlayer(p);
-                    setPlayer(p)
-                    console.log(p);
+                    // TODO navigate to new page. "mount" with random player
+                    navigate("/randPlayer")
                     //handlePlayerChange(player)
                 }
                 else{
@@ -187,7 +186,7 @@ export const GenPlayerForm = ({setPlayer} : {setPlayer : any}) => {
                         </Select>
                 </Grid>
                 <Grid item>
-                    <Button color="success" variant="contained" onClick={handleCreatePlayer}>Generate Player</Button>
+                    <Button color="success" variant="contained" onClick={() => handleCreatePlayer()}>Generate Player</Button>
                 </Grid>
             </Grid>
             
