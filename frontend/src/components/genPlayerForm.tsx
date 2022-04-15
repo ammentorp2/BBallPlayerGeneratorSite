@@ -2,7 +2,6 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Button, Grid, MenuItem, Select, TextField, Typography } from "@mui/material"
-import {genRandomPlayer} from "../util/GetPlayerFunctions"
 import { Player } from "../util/Player"
 
 export const GenPlayerForm = () => {

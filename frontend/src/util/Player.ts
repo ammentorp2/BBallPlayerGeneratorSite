@@ -15,6 +15,7 @@ export class Player{
     }
 
     toString() : String{
+        //TODO format this more
         return this.firstName + "," + this.lastName;
     }
 }
