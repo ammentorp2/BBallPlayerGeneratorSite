@@ -5,6 +5,9 @@ export class Player{
     primaryPosition : string;
     secondaryPosition : string;
     age : string;
+    height : string;
+    playstyle : string;
+    weight : string;
     
     constructor(){
         this.firstName = "";
@@ -12,10 +15,20 @@ export class Player{
         this.primaryPosition = "";
         this.secondaryPosition = "";
         this.age = "";
+        this.height = "";
+        this.playstyle = "";
+        this.weight = "";
     }
 
     toString() : String{
         //TODO format this more
-        return this.firstName + "," + this.lastName;
+        
+        let res = this.firstName + " " + this.lastName + "\n" + this.height + ","
+                    + this.weight + "lbs | " + this.primaryPosition;
+        if(this.secondaryPosition != null)
+            res += "/" + this.secondaryPosition;
+
+        res += "\n" + this.age + " year old " + this.playstyle;
+        return res;
     }
 }
