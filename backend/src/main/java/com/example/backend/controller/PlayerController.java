@@ -1,11 +1,9 @@
 package com.example.backend.controller;
 
 import model.Player;
+import model.Position;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import service.PlayerCreatorService;
 
 @RestController
@@ -15,5 +13,12 @@ public class PlayerController {
     @ResponseBody
     public ResponseEntity<Player> generateRandomPlayer(){
         return ResponseEntity.ok().body(PlayerCreatorService.createPlayer());
+    }
+
+    @GetMapping(value="/getPlayerByPos/{pos}")
+    @ResponseBody
+    public ResponseEntity<Player> generatePlayerByPos(@PathVariable(value="pos") String pos){
+        Position p = Position.valueOf(pos);
+        return ResponseEntity.ok().body(PlayerCreatorService.createPlayerByPosition(p));
     }
 }

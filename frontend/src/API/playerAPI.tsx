@@ -7,3 +7,20 @@ export async function getRandomPlayer(){
         return null;
     }
 }
+
+export async function getPlayerByPos(primaryPos : String , secondaryPos : String | null){
+    if(secondaryPos == null){
+        try{
+            return await axios.get("getPlayerByPos/" + primaryPos);
+        }catch(e){
+            return null;
+        }
+    }
+    else{
+        try{
+            return await axios.get("getPlayerByPos/" + primaryPos + "/" + secondaryPos);
+        }catch(e){
+            return null;
+        }
+    }
+}
