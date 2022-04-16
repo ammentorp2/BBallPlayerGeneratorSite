@@ -1,8 +1,7 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Button, Grid, MenuItem, Select, TextField, Typography } from "@mui/material"
-import { Player } from "../util/Player"
+import { Button, Grid, MenuItem, Select, TextField } from "@mui/material"
 
 export const GenPlayerForm = () => {
     //name position(s) and age
