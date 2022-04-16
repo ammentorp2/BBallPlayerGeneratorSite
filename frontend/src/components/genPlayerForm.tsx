@@ -29,13 +29,11 @@ export const GenPlayerForm = () => {
 
                 if(age === "Random"){
                     //True random player
-                    // TODO navigate to new page. "mount" with random player
-                    navigate("/randPlayer")
-                    //handlePlayerChange(player)
+                    navigate("/player")
                 }
                 else{
                     //create player by age
-                   
+                    navigate("/playerByAge?age=" + age);
                 }
             }
             else{
