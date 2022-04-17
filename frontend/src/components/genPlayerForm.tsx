@@ -51,7 +51,7 @@ export const GenPlayerForm = () => {
                 else{
                     if(age === "Random"){
                         //create player by pos,pos
-                        
+                        navigate("/playerByPos?primaryPos=" + primaryPos + "&secondaryPos=" + secondaryPos);
                     }
                     else{
                         //create player by pos,pos and age
@@ -66,7 +66,7 @@ export const GenPlayerForm = () => {
                 //random pos
 
                 if(age === "Random"){
-                    //player by age
+                    //player by name
             
                 }
                 else{

@@ -21,4 +21,13 @@ public class PlayerController {
         Position p = Position.valueOf(pos);
         return ResponseEntity.ok().body(PlayerCreatorService.createPlayerByPosition(p));
     }
+
+    @GetMapping(value="/getPlayerByPos/{primaryPos}/{secondaryPos}")
+    @ResponseBody
+    public ResponseEntity<Player> generatePlayerByPos(@PathVariable(value="primaryPos") String primaryPosition,
+                                                      @PathVariable(value="secondaryPos") String secondaryPosition){
+        Position p = Position.valueOf(primaryPosition);
+        Position s = Position.valueOf(secondaryPosition);
+        return ResponseEntity.ok().body(PlayerCreatorService.createPlayerByPosition(p,s));
+    }
 }

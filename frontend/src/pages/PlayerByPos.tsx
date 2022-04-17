@@ -24,6 +24,7 @@ export const PlayerByPos = () => {
                 console.log("Could not get player!")
             }
             else{
+                console.log(response.data)
                 p.firstName = response.data.firstName;
                 p.lastName = response.data.lastName;
                 p.primaryPosition = response.data.primaryPosition;
