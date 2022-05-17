@@ -28,7 +28,7 @@ public class WeightService {
      * @return generated weight
      */
     public static int generateWeight(Position primaryPosition, Position secondaryPosition) {
-        Random rand = new Random(System.currentTimeMillis() % 11);
+        Random rand = new Random(System.currentTimeMillis());
         int variance = rand.nextInt(11); /* 0-10 */
         boolean flip = rand.nextBoolean();
 

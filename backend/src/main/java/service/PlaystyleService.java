@@ -45,22 +45,15 @@ public class PlaystyleService {
      * @return a random playstyle
      */
     public static String generatePlaystyle(Position primaryPosition) {
-        Random rand = new Random(System.currentTimeMillis() % 500);
+        Random rand = new Random(System.currentTimeMillis());
         int posNum = rand.nextInt(8); /* 0-7 */
 
-        switch (primaryPosition) {
-            case PG:
-                return pgPlaystyles[posNum];
-            case SG:
-                return sgPlaystyles[posNum];
-            case SF:
-                return sfPlaystyles[posNum];
-            case PF:
-                return pfPlaystyles[posNum];
-            case C:
-                return centerPlaystyles[posNum];
-            default:
-                throw new IllegalArgumentException();
-        }
+        return switch (primaryPosition) {
+            case PG -> pgPlaystyles[posNum];
+            case SG -> sgPlaystyles[posNum];
+            case SF -> sfPlaystyles[posNum];
+            case PF -> pfPlaystyles[posNum];
+            case C -> centerPlaystyles[posNum];
+        };
     }
 }
