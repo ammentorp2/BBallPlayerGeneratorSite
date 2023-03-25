@@ -1,8 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
 import axios from 'axios'; 
-import './App.css';
-import { GenPlayerForm } from './components/genPlayerForm';
 import { BrowserRouter } from 'react-router-dom';
 import { PageRoutes } from './pages/Routes';
 
