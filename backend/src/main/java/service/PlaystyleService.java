@@ -45,7 +45,7 @@ public class PlaystyleService {
      * @return a random playstyle
      */
     public static String generatePlaystyle(Position primaryPosition) {
-		Random rand = new Random(System.currentTimeMillis());
+    	Random rand = new Random(System.currentTimeMillis());
         int posNum = rand.nextInt(8); /* 0-7 */
 
         switch (primaryPosition) {
