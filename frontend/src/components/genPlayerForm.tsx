@@ -21,7 +21,6 @@ export const GenPlayerForm = () => {
     const [player,setPlayer] = useState<Player>();
 
     const handleSetPlayerFromResponse = (x : any) => {
-        console.log(typeof x)
         let p = new Player();
         p.firstName = x.data.firstName;
         p.lastName = x.data.lastName;
@@ -35,9 +34,85 @@ export const GenPlayerForm = () => {
     };
 
     const handleCreatePlayer = () => {
-        getRandomPlayer().then((x: any) => {
-            handleSetPlayerFromResponse(x);
-        });
+        if(firstName === "" && lastName === ""){
+            //random name
+
+            if(primaryPos === ''){
+                //random pos
+
+                if(age === "Random"){
+                    //True random player
+                    getRandomPlayer().then((x: any) => {
+                        handleSetPlayerFromResponse(x);
+                    });
+                }
+                else{
+                    //create player by age
+
+                }
+            }
+            else{
+                //rand name but pos
+                if(secondaryPos === ''){
+                    if(age === "Random"){
+                        //create player by pos
+
+                    }
+                    else{
+                        //create player by pos and age
+
+                    }
+                }
+                else{
+                    if(age === "Random"){
+                        //create player by pos,pos
+
+                    }
+                    else{
+                        //create player by pos,pos and age
+
+                    }
+                }
+            }
+        }
+        else{
+            //create player by name
+            if(primaryPos === ''){
+                //random pos
+
+                if(age === "Random"){
+                    //player by age
+
+                }
+                else{
+                    //create player by name and age
+
+                }
+            }
+            else{
+                // name and pos
+                if(secondaryPos === ''){
+                    if(age === "Random"){
+                        //create player by name and pos
+
+                    }
+                    else{
+                        //create player by name pos and age
+
+                    }
+                }
+                else{
+                    if(age === "Random"){
+                        //create player by name and pos,pos
+
+                    }
+                    else{
+                        //create player by name pos,pos and age
+
+                    }
+                }
+            }
+        }
     }
 
     const handleChangePrimaryPos = (pos : string) => {
