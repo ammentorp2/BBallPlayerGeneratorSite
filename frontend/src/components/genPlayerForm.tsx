@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Button, Grid, MenuItem, Select, TextField } from "@mui/material"
+import { Button, Grid, MenuItem, Select, TextField, Typography } from "@mui/material"
+import { Player } from "../util/Player"
+import { getRandomPlayer } from '../API/playerAPI';
 
 export const GenPlayerForm = () => {
-    //name position(s) and age
+
     const [firstName,setFirstName] = useState("");
     const [lastName,setLastName] = useState("");
 
@@ -17,10 +18,22 @@ export const GenPlayerForm = () => {
     const [age,setAge] = useState("Random");
     const ageOptions = ["Random",19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40];
 
-    let navigate = useNavigate();
+    const [player,setPlayer] = useState<Player>();
+
+    const handleSetPlayerFromResponse = (x : any) => {
+        let p = new Player();
+        p.firstName = x.data.firstName;
+        p.lastName = x.data.lastName;
+        p.primaryPosition = x.data.primaryPosition;
+        p.secondaryPosition = x.data.secondaryPosition;
+        p.age = x.data.age; 
+        p.playstyle = x.data.playstyle;
+        p.height = x.data.formattedHeight;
+        p.weight = x.data.weight;
+        setPlayer(p);
+    };
 
     const handleCreatePlayer = () => {
-        console.log(firstName,lastName,primaryPos,secondaryPos,age);
         if(firstName === "" && lastName === ""){
             //random name
 
@@ -29,13 +42,13 @@ export const GenPlayerForm = () => {
 
                 if(age === "Random"){
                     //True random player
-                    // TODO navigate to new page. "mount" with random player
-                    navigate("/randPlayer")
-                    //handlePlayerChange(player)
+                    getRandomPlayer().then((x: any) => {
+                        handleSetPlayerFromResponse(x);
+                    });
                 }
                 else{
                     //create player by age
-                   
+
                 }
             }
             else{
@@ -43,21 +56,21 @@ export const GenPlayerForm = () => {
                 if(secondaryPos === ''){
                     if(age === "Random"){
                         //create player by pos
-                        
+
                     }
                     else{
                         //create player by pos and age
-                        
+
                     }
                 }
                 else{
                     if(age === "Random"){
                         //create player by pos,pos
-                        
+
                     }
                     else{
                         //create player by pos,pos and age
-                        
+
                     }
                 }
             }
@@ -69,11 +82,11 @@ export const GenPlayerForm = () => {
 
                 if(age === "Random"){
                     //player by age
-            
+
                 }
                 else{
                     //create player by name and age
-      
+
                 }
             }
             else{
@@ -91,11 +104,11 @@ export const GenPlayerForm = () => {
                 else{
                     if(age === "Random"){
                         //create player by name and pos,pos
-                        
+
                     }
                     else{
                         //create player by name pos,pos and age
-                        
+
                     }
                 }
             }
@@ -186,10 +199,10 @@ export const GenPlayerForm = () => {
                 <Grid item>
                     <Button color="success" variant="contained" onClick={() => handleCreatePlayer()}>Generate Player</Button>
                 </Grid>
+                <Grid item>
+                    <Typography>Player: {(player) ? player.toString() : ''}</Typography>
+                </Grid>
             </Grid>
-            
-          
-          
         </div>
       );
 }

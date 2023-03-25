@@ -139,13 +139,11 @@ public class HeightService {
             }
             return getHeightBasedOnPosition(pfHeightDist,totalWeight);
         }
-        else if(primaryPosition == Position.C){
+        else {
             for(var i : centerHeightDist){
                 totalWeight += i.getR();
             }
             return getHeightBasedOnPosition(centerHeightDist,totalWeight);
         }
-        return 0;
-
     }
 }

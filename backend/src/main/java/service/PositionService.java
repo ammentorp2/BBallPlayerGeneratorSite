@@ -18,7 +18,7 @@ public class PositionService {
      * @return generated position
      */
     public static Position generatePosition(){
-        Random rand = new Random(System.currentTimeMillis() % 500);
+        Random rand = new Random(System.currentTimeMillis());
 
         int posNum = rand.nextInt(6) + 1;
 
