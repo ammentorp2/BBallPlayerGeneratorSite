@@ -11,7 +11,7 @@ public class AgeService {
      * @return random age
      */
     public static int generateAge() {
-        Random rand = new Random(System.currentTimeMillis() % 17);
+        Random rand = new Random(System.currentTimeMillis());
         return rand.nextInt(20) + 19;
     }
     // TODO make service to make age range prospect/young/prime/veteran/old (user controlled age range)
